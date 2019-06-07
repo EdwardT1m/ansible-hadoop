@@ -1,0 +1,2 @@
+[test_vm]
+fw-test ansible_host=192.168.111.38 ansible_user=root
