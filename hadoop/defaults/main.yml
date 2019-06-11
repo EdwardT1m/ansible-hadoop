@@ -12,7 +12,7 @@ core_props: {fs.du.interval: 3600000}
 mapred_props: {mapreduce.framework.name: 'yarn'}
 hdfs_props: {dfs.namenode.name.dir: '/mnt/hadoop/name', dfs.datanode.data.dir: '/mnt/hadoop/data', dfs.replication: 2, dfs.client.read.shortcircuit: 'true', dfs.client.file-block-storage-locations.timeout.millis: 10000, dfs.datanode.hdfs-blocks-metadata.enabled: 'true', dfs.permissions: 'false', dfs.domain.socket.path: '/opt/hadoop-3.1.2/dn_socket'}
 # A dictionary with a set of properties to set in the yarn-site.xml
-yarn_props: {yarn.acl.enable: 0, yarn.resourcemanager.hostname: 'master', yarn.nodemanager.aux-services: 'mapreduce_shuffle'}
+yarn_props: {yarn.acl.enable: 0, yarn.nodemanager.aux-services: 'mapreduce_shuffle'}
 # A dictionary with a set of users to configure hdfs
 users_dict: {}
 # List of slave nodes
