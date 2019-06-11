@@ -1,6 +1,16 @@
-- hosts: all
+- hosts: slave
   roles:
-  - { role: 'hadoop',  hadoop_master: 'master', hadoop_type_of_node: 'master'}
+   - { role: 'hadoop', hadoop_master: '192.168.111.38' }
+  environment:
+    HDFS_NAMENODE_USER: root
+    HDFS_DATANODE_USER: root
+    HDFS_SECONDARYNAMENODE_USER: root
+    YARN_RESOURCEMANAGER_USER: root
+    YARN_NODEMANAGER_USER: root
+
+- hosts: master
+  roles:
+  - { role: 'hadoop',  hadoop_master: '192.168.111.38', hadoop_type_of_node: 'master'}
   environment:
     HDFS_NAMENODE_USER: root
     HDFS_DATANODE_USER: root

@@ -38,15 +38,15 @@
   listen: "restart hadoop-datanode"
 
 - name: stop yarn-nodemanager
-#  action: shell {{ hadoop_home }}/sbin/stop-all.sh
-  action: shell {{ hadoop_home }}/bin/yarn --daemon stop nodemanager
+  action: shell {{ hadoop_home }}/sbin/stop-all.sh
+#  action: shell {{ hadoop_home }}/bin/yarn --daemon stop nodemanager
   when: ( hadoop_type_of_node == 'slave' ) or ( hadoop_type_of_node == 'nodemanager' )
   listen: "restart yarn-nodemanager"
   ignore_errors:  yes
 
 - name: start yarn-nodemanager
-#  action: shell {{ hadoop_home }}/sbin/start-all.sh
-  action: shell {{ hadoop_home }}/bin/yarn --daemon start nodemanager
+  action: shell {{ hadoop_home }}/sbin/start-all.sh
+#  action: shell {{ hadoop_home }}/bin/yarn --daemon start nodemanager
   when: ( hadoop_type_of_node == 'slave' ) or ( hadoop_type_of_node == 'nodemanager' )
   listen: "restart yarn-nodemanager"
 
