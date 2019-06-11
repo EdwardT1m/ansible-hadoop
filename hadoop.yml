@@ -1,3 +1,9 @@
 - hosts: all
   roles:
-  - { role: 'hadoop',  hadoop_master: 'MASTER_NODE_NAME_OR_IP', hadoop_type_of_node: 'master'}
+  - { role: 'hadoop',  hadoop_master: 'master', hadoop_type_of_node: 'master'}
+  environment:
+    HDFS_NAMENODE_USER: root
+    HDFS_DATANODE_USER: root
+    HDFS_SECONDARYNAMENODE_USER: root
+    YARN_RESOURCEMANAGER_USER: root
+    YARN_NODEMANAGER_USER: root

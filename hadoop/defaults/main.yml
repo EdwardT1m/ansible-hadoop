@@ -3,13 +3,16 @@ hadoop_type_of_node: slave
 # Hadoop base directory to install the software
 hadoop_home: /opt/hadoop-2.X
 # List of servers to download the hadoop code
-hadoop_mirrors: [ "http://ftpgrycap.i3m.upv.es/src/", "http://apache.rediris.es/hadoop/core/stable2/", "http://www-eu.apache.org/dist/hadoop/common/stable2/" ]
+#hadoop_mirrors: [ "http://ftpgrycap.i3m.upv.es/src/", "http://apache.rediris.es/hadoop/core/stable2/", "http://www-eu.apache.org/dist/hadoop/common/stable2/" , "http://www-eu.apache.org/dist/hadoop/common/hadoop-3.1.2/"]
+hadoop_mirrors: ["http://www-eu.apache.org/dist/hadoop/common/hadoop-3.1.2/"]
 # Hadoop version to install: latest or version num
-hadoop_version: latest
+hadoop_version: '3.1.2'
 # A dictionary with a set of properties to set in the hdfs-site.xml
-hdfs_props: {}
+core_props: {fs.du.interval: 3600000}
+mapred_props: {mapreduce.framework.name: 'yarn'}
+hdfs_props: {dfs.namenode.name.dir: '/mnt/hadoop/name', dfs.datanode.data.dir: '/mnt/hadoop/data', dfs.replication: 2, dfs.client.read.shortcircuit: 'true', dfs.client.file-block-storage-locations.timeout.millis: 10000, dfs.datanode.hdfs-blocks-metadata.enabled: 'true', dfs.permissions: 'false', dfs.domain.socket.path: '/opt/hadoop-3.1.2/dn_socket'}
 # A dictionary with a set of properties to set in the yarn-site.xml
-yarn_props: {}
+yarn_props: {yarn.acl.enable: 0, yarn.resourcemanager.hostname: 'master', yarn.nodemanager.aux-services: 'mapreduce_shuffle'}
 # A dictionary with a set of users to configure hdfs
 users_dict: {}
 # List of slave nodes
