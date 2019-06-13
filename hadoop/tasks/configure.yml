@@ -35,7 +35,7 @@
   template: src=slaves dest="{{ hadoop_home }}/etc/hadoop/slaves" owner=root group=root
   notify:
    - refreshDFSNodes
-   - refreshYarnNodes
+#   - refreshYarnNodes
    - restart hadoop-datanode
    - restart yarn-nodemanager
 

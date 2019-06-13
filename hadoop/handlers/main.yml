@@ -12,27 +12,23 @@
   listen: "restart hadoop-dfs"
   
 - name: stop yarn-resourcemanager
-#  action: shell {{ hadoop_home }}/sbin/stop-all.sh
   action: shell {{ hadoop_home }}/bin/yarn --daemon stop resourcemanager
   when: ( hadoop_type_of_node == 'master' ) or ( hadoop_type_of_node == 'resourcemanager' )
   listen: "restart yarn-resourcemanager"
   ignore_errors:  yes
 
 - name: start yarn-resourcemanager
-#  action: shell {{ hadoop_home }}/sbin/start-all.sh
   action: shell {{ hadoop_home }}/bin/yarn --daemon start resourcemanager
   when: ( hadoop_type_of_node == 'master' ) or ( hadoop_type_of_node == 'resourcemanager' )
   listen: "restart yarn-resourcemanager"
 
 - name: stop hadoop-datanode
-#  action: shell {{ hadoop_home }}/sbin/stop-all.sh
   action: shell {{ hadoop_home }}/bin/hdfs --daemon stop datanode
   when: ( hadoop_type_of_node == 'slave' ) or ( hadoop_type_of_node == 'datanode' )
   listen: "restart hadoop-datanode"
   ignore_errors:  yes
 
 - name: start hadoop-datanode
-#  action: shell {{ hadoop_home }}/sbin/start-all.sh
   action: shell {{ hadoop_home }}/bin/hdfs --daemon start datanode
   when: ( hadoop_type_of_node == 'slave' ) or ( hadoop_type_of_node == 'datanode' )
   listen: "restart hadoop-datanode"
